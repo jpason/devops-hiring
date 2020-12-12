@@ -1,0 +1,40 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-hiring-deployment
+  labels:
+    app: devops-hiring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-hiring
+  template:
+    metadata:
+      labels:
+        app: devops-hiring
+    spec:
+      containers:
+      - name: devops-hiring
+        image: devops-hiring:latest
+        imagePullPolicy: Never  
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DB_NAME
+          value: "devopshiring"
+        - name: DB_USER
+          value: "django"
+        - name: DB_HOST
+          value: "10.0.2.15"
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: devops-hiring-secrets
+              key: DB_PASS
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: devops-hiring-secrets
+              key: SECRET_KEY

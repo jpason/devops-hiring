@@ -1,0 +1,6 @@
+APP_NAME='devops-hiring'
+SECRET_KEY=''                       # intentionally blank, set it yourself
+DB_PASS=''                          # intentionally blank, set it yourself
+DB_NAME='devopshiring'
+DB_USER='django'
+DB_HOST='172.17.0.1'                # change to your docker0 interface address
