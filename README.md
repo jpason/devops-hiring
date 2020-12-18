@@ -22,10 +22,10 @@ Kubernetes
 
 Only deployment on minikube with docker driver was tested. Use files from `minikube` directory. Secrets encrypted with SOPS are provided as a proof-of-concept, how to securely keep secrets in Git.  
 
-eval $(minikube docker-env) 
-docker build -t devops-hiring .
-sops -d secrets.sops.yaml|kubectl apply -f -
-kubectl apply -f deployment.yaml
+* eval $(minikube docker-env) 
+* docker build -t devops-hiring .
+* sops -d secrets.sops.yaml|kubectl apply -f -
+* kubectl apply -f deployment.yaml
 
 
 Terraform
